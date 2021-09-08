@@ -16,19 +16,35 @@ main {
   margin-top: 32px;
   text-align: center;
 }
+.addtask{
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid #FD951Fcc;
+  background-color: #7a7a7a11;
+  text-align: center;
+  line-height: 54px;
+}
+.removetask{
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid #FD951Fcc;
+  background-color: #7a7a7a11;
+  text-align: center;
+  line-height: 54px;
+  margin-top: 10px;
+}
 
 .menu a{
-  background-color: #7a7a7a11;
-  padding: 16px;
-  width: 32px;
-  border-radius: 40%;
-  border: 1px solid #FD951Fcc;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 900;
   color: #fff;
 }
-
+.removetask a{
+  font-size: 18px;
+}
 .boards{
   display: flex;
   margin-top: 32px;
@@ -69,10 +85,21 @@ main {
 .status{
   width: 30px;
   height: 8px;
-  background-color: gray;
   margin-bottom: 16px;
   border-radius: 8px;
 
+}
+.content input{
+  background-color: #1A1A1C;
+  border: none;
+  color: white;
+  display: block;
+  font-size: 1.05em;
+  font-weight: 400;
+  width: 240px;
+}
+.content input:focus{
+  border-color: #FD951Fcc;
 }
 .description{
   margin-top: 10px;

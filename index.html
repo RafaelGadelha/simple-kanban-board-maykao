@@ -12,7 +12,8 @@
 <body>
   <main>
     <aside class="menu">
-      <a class="addtask" href="#">+</a>
+      <div class="addtask"><a href="#">+</a></div>
+      <div class="removetask"><a href="#">X</a></div>
     </aside>
     <div class="boards">
       <div class="board">
@@ -21,9 +22,9 @@
           <div class="card" draggable="true">
             <div class="status blue"></div>
             <div class="btndeleteTask"><a href="#">X</a></div>
-            <div class="content">Do videos</div>
+            <div class="content"><input type="text" name="task" value="" placeholder="Task Title"></div>
             <div class="description">
-              <textarea class="description-text"></textarea>
+              <textarea class="description-text" placeholder="Task description"textarea></textarea>
             </div>
           </div>
         </div>
