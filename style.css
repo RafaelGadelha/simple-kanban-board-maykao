@@ -72,6 +72,38 @@ main {
   background-color: gray;
   margin-bottom: 16px;
   border-radius: 8px;
+
+}
+.description{
+  margin-top: 10px;
+}
+
+.description-text{
+  width: 240px;
+  resize: vertical;
+  box-shadow: 0 2px 2px 0px #FD951Fcc;
+  border: none;
+  background-color: #7a7a7a11;
+  color: white;
+  font-size: 18px;
+
+}
+
+.btndeleteTask a{
+  text-decoration: none;
+  color: white;
+  padding: 8px;
+  font-weight: bold;
+}
+.btndeleteTask{
+  width: 32px;
+  height: 32px;
+  background-color: #FD951F88;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 32px;
+  display: none;
 }
 
 .status.green{
@@ -80,8 +112,8 @@ main {
 .status.blue{
   background-color: #33adff;
 }
-.status.red{
-  background-color: red;
+.status.yellow{
+  background-color: yellow;
 }
 .highlight{
   background-color: #FD951F08;
