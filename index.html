@@ -10,36 +10,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="boards">
-    <div class="board">
-      <h3>To do</h3>
-      <div class="dropzone">
-        <div class="card" draggable="true">
-          <div class="status green"></div>
-          <div class="content">Do videos</div>
+  <main>
+    <aside class="menu">
+      <a class="addtask" href="#">+</a>
+    </aside>
+    <div class="boards">
+      <div class="board">
+        <h3>To do</h3>
+        <div class="dropzone" id="initial">
+          <div class="card" draggable="true">
+            <div class="status green"></div>
+            <div class="content">Do videos</div>
+          </div>
+        </div>
+      </div>
+      <div class="board">
+        <h3>In progress</h3>
+        <div class="dropzone">
+          <div class="card" draggable="true">
+            <div class="status blue"></div>
+            <div class="content">Forum</div>
+          </div>
+        </div>
+      </div>
+      <div class="board">
+        <h3>Done</h3>
+        <div class="dropzone">
+          <div class="card" draggable="true">
+            <div class="status red"></div>
+            <div class="content">Next level Week</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="board">
-      <h3>In progress</h3>
-      <div class="dropzone">
-        <div class="card" draggable="true">
-          <div class="status blue"></div>
-          <div class="content">Forum</div>
-        </div>
-      </div>
-    </div>
-    <div class="board">
-      <h3>Done</h3>
-      <div class="dropzone">
-        <div class="card" draggable="true">
-          <div class="status red"></div>
-          <div class="content">Next level Week</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

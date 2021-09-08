@@ -5,6 +5,28 @@ html{
 body{
   background-color: #130f0d;
   color: white;
+  
+}
+main {
+  display: grid;
+  grid-template-columns: 10% 90%;
+}
+
+.menu{
+  margin-top: 32px;
+  text-align: center;
+}
+
+.menu a{
+  background-color: #7a7a7a11;
+  padding: 16px;
+  width: 32px;
+  border-radius: 40%;
+  border: 1px solid #FD951Fcc;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
 }
 
 .boards{
@@ -14,10 +36,9 @@ body{
 
 .board{
   background: #141316;
-  border: 1px solid #FD951F11;
+  border: 1px solid #7a7a7a11;
   border-radius: 4px;
   margin: 0 16px;
-  height: 100%;
 }
 
 .board h3{
@@ -30,7 +51,7 @@ body{
   padding: 16px;
   min-width: 282px;
   min-height: 200px;
-  height: 100%;
+  height: 75%;
 }
 
 .card{

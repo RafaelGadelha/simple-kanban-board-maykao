@@ -39,3 +39,13 @@ function dragleave(){
 function drop(){
   this.classList.remove('over')
 }
+
+document.querySelector('.addtask').addEventListener("click", addtask)
+
+function addtask(){
+  cardinsert = document.querySelector('.card').cloneNode( true )
+  document.querySelector('#initial').appendChild(cardinsert)
+  cardinsert.addEventListener('dragstart', dragstart)
+  cardinsert.addEventListener('drag', drag)
+  cardinsert.addEventListener('dragend', dragend)
+}
