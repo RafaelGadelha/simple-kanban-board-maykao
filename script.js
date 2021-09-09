@@ -1,15 +1,19 @@
 const cards = document.querySelectorAll('.card')
 const dropzones = document.querySelectorAll('.dropzone')
-const groupstatus = document.querySelectorAll('.status')
 const groupbtndeletetask = document.querySelectorAll('.btndeleteTask')
+const groupstatus = document.querySelectorAll('.status')
+addIdCards()
+addFuncDeleteTask()
 
-
-  cards.forEach(card => {
+function addIdCards(){
+  let cards = document.querySelectorAll('.card')
+  cards.forEach(function(card, index){
     card.addEventListener('dragstart', dragstart)
     card.addEventListener('drag', drag)
     card.addEventListener('dragend', dragend)
-
+    card.setAttribute('id', 'card'+ index);
   })
+}
 
 function dragstart(){
   dropzones.forEach( dropzone => dropzone.classList.add('highlight'))
@@ -51,11 +55,16 @@ function addtask(){
   cardinsert.addEventListener('dragstart', dragstart)
   cardinsert.addEventListener('drag', drag)
   cardinsert.addEventListener('dragend', dragend)
+  addIdCards()
+  addFuncDeleteTask()
+  
 }
 
 const btnRemoveTask = document.querySelector('.removetask')
 btnRemoveTask.addEventListener("click", removeTask)
 function removeTask(){
+  const groupbtndeletetask = document.querySelectorAll('.btndeleteTask')
+  const groupstatus = document.querySelectorAll('.status')
   if(btnRemoveTask.classList.contains("clicked")){
     btnRemoveTask.classList.remove('clicked')
     groupstatus.forEach(status =>{
@@ -77,4 +86,17 @@ function removeTask(){
     })
     btnRemoveTask.classList.add('clicked')
   }  
+}
+
+function addFuncDeleteTask(){
+  let groupbtndeletetask = document.querySelectorAll('.btndeleteTask')
+  groupbtndeletetask.forEach(btnDeleteTask =>{
+    btnDeleteTask.addEventListener('click', deleteTask)
+  })
+}
+
+function deleteTask(){
+  id = this.parentElement.getAttribute('id')
+  console.log(id)
+  document.querySelector("#"+id).remove()
 }
