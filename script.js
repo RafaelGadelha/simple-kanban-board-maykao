@@ -33,9 +33,11 @@ dropzones.forEach(dropzone => {
   dropzone.addEventListener('drop', drop)
 })
 
+
 function dragenter(){
 }
-function dragover(){
+function dragover(ev){
+  ev.preventDefault();
   this.classList.add('over')
   const cardBeingDragged = document.querySelector('.is-dragging')
   this.appendChild(cardBeingDragged)
@@ -43,8 +45,26 @@ function dragover(){
 function dragleave(){
   this.classList.remove('over')
 }
-function drop(){
+function drop(ev){
+  ev.preventDefault()
   this.classList.remove('over')
+  
+  let cardsTodo = document.querySelectorAll(".todo> .card> .status")
+  cardsTodo.forEach(cardTodo =>{
+    cardTodo.classList.remove("blue", "green")
+    cardTodo.classList.add("yellow")
+  })
+  let cardsProgress = document.querySelectorAll(".progress> .card> .status")
+  cardsProgress.forEach(cardProgress =>{
+    cardProgress.classList.remove("yellow", "green")
+    cardProgress.classList.add("blue")
+  })
+  let cardsDone = document.querySelectorAll(".done> .card> .status")
+  cardsDone.forEach(cardDone =>{
+    cardDone.classList.remove("blue", "yellow")
+    cardDone.classList.add("green")
+  })
+
 }
 
 document.querySelector('.addtask').addEventListener("click", addtask)

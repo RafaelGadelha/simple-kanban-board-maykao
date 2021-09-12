@@ -164,7 +164,7 @@ main {
   background-color: #FD951F08;
 }
 .is-dragging{
-  cursor: pointer;
+  cursor: move;
   opacity: 0.3;
 }
 .over{
