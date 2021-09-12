@@ -5,6 +5,8 @@ const groupstatus = document.querySelectorAll('.status')
 addIdCards()
 addFuncDeleteTask()
 
+
+
 function addIdCards(){
   let cards = document.querySelectorAll('.card')
   cards.forEach(function(card, index){
@@ -69,7 +71,8 @@ function drop(ev){
 
 document.querySelector('.addtask').addEventListener("click", addtask)
 
-function addtask(){
+function addtask(e){
+  e.preventDefault();
   cardinsert = document.querySelector('.card').cloneNode( true )
   document.querySelector('#initial').appendChild(cardinsert)
   cardinsert.addEventListener('dragstart', dragstart)
@@ -82,7 +85,8 @@ function addtask(){
 
 const btnRemoveTask = document.querySelector('.removetask')
 btnRemoveTask.addEventListener("click", removeTask)
-function removeTask(){
+function removeTask(e){
+  e.preventDefault();
   const groupbtndeletetask = document.querySelectorAll('.btndeleteTask')
   const groupstatus = document.querySelectorAll('.status')
   if(btnRemoveTask.classList.contains("clicked")){
@@ -115,8 +119,8 @@ function addFuncDeleteTask(){
   })
 }
 
-function deleteTask(){
+function deleteTask(e){
+  e.preventDefault();
   id = this.parentElement.getAttribute('id')
-  console.log(id)
   document.querySelector("#"+id).remove()
 }
