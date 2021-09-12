@@ -69,18 +69,43 @@ function drop(ev){
 
 }
 
-document.querySelector('.addtask').addEventListener("click", addtask)
+document.querySelector('.addtask').addEventListener("click", addTask)
 
-function addtask(e){
+function addTask(e){
   e.preventDefault();
-  cardinsert = document.querySelector('.card').cloneNode( true )
-  document.querySelector('#initial').appendChild(cardinsert)
-  cardinsert.addEventListener('dragstart', dragstart)
-  cardinsert.addEventListener('drag', drag)
-  cardinsert.addEventListener('dragend', dragend)
-  addIdCards()
-  addFuncDeleteTask()
-  
+  console.log('chamou')
+  let card = document.createElement('div')
+    card.classList.add('card')
+    card.setAttribute('draggable', true)
+      let statusBar = document.createElement('div')
+        statusBar.classList.add('status', 'yellow')
+      card.appendChild(statusBar)
+      let btnDeleteTask = document.createElement('div')
+        btnDeleteTask.classList.add('btndeleteTask', 'hide')
+        let linkDeleteTask = document.createElement('a')
+          linkDeleteTask.setAttribute('href', '#')
+          linkDeleteTask.innerHTML = 'X'
+          btnDeleteTask.appendChild(linkDeleteTask)
+      card.appendChild(btnDeleteTask)
+      let content = document.createElement('div')
+        content.classList.add('content')
+        let inputTaskTitle = document.createElement('input')
+          inputTaskTitle.setAttribute('type', 'text')
+          inputTaskTitle.setAttribute('name', 'taskTitle')
+          inputTaskTitle.setAttribute('value', '')
+          inputTaskTitle.setAttribute('placeholder', 'Task Title')
+        content.appendChild(inputTaskTitle)
+      card.appendChild(content)
+      let description = document.createElement('div')
+        description.classList.add('description')
+        let descriptionText = document.createElement('textarea')
+          descriptionText.setAttribute('placeholder', 'Task description')
+          descriptionText.classList.add('description-text')
+          description.appendChild(descriptionText)
+      card.appendChild(description)
+document.querySelector('#initial').appendChild(card)
+addIdCards()
+addFuncDeleteTask() 
 }
 
 const btnRemoveTask = document.querySelector('.removetask')
