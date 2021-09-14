@@ -73,7 +73,6 @@ document.querySelector('.addtask').addEventListener("click", addTask)
 
 function addTask(e){
   e.preventDefault();
-  console.log('chamou')
   let card = document.createElement('div')
     card.classList.add('card')
     card.setAttribute('draggable', true)
@@ -106,6 +105,34 @@ function addTask(e){
 document.querySelector('#initial').appendChild(card)
 addIdCards()
 addFuncDeleteTask() 
+salvarDados();
+}
+
+function salvarDados(){
+  var dadosCards = []
+  let i = 0
+  let cards = document.querySelectorAll('.card')
+    cards.forEach(card => {
+      let statusTask = cards[i].childNodes[0].classList.value.substring(7, 13)
+      if(statusTask.match(/green/)){
+        statusTask = 'green'
+      }else if(statusTask.match(/blue/)){
+        statusTask = 'blue'
+      }else if(statusTask.match(/yellow/)){
+        statusTask = 'yellow'
+      }
+      let titleTask = cards[i].childNodes[2].childNodes[0].value
+      let descriptionTask = cards[i].childNodes[3].childNodes[0].value
+      dadosCards.push(
+          {id: i++,
+           statusCard: statusTask,
+           tituloCard: titleTask,
+           descriptionCard: descriptionTask
+      })
+    })
+    console.log(dadosCards)
+    localStorage.clear
+    localStorage.dadosCards = JSON.stringify(dadosCards)
 }
 
 const btnRemoveTask = document.querySelector('.removetask')
@@ -148,4 +175,5 @@ function deleteTask(e){
   e.preventDefault();
   id = this.parentElement.getAttribute('id')
   document.querySelector("#"+id).remove()
+  salvarDados()
 }
