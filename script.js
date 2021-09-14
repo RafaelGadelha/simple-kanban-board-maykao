@@ -71,13 +71,21 @@ function drop(ev){
 
 document.querySelector('.addtask').addEventListener("click", addTask)
 
-function addTask(e){
-  e.preventDefault();
+function addTask(e, status, title, description){
+  if(e !== undefined){e.preventDefault()}
+  let statusT
+  let titleT
+  let descriptionT
+  
+  if(status !== undefined){statusT = status}else{statusT = 'yellow'}
+  if(title !== undefined){titleT = title}else{titleT = ''}
+  if(description !== undefined){descriptionT = description}else{descriptionT = ''}
+  
   let card = document.createElement('div')
     card.classList.add('card')
     card.setAttribute('draggable', true)
       let statusBar = document.createElement('div')
-        statusBar.classList.add('status', 'yellow')
+        statusBar.classList.add('status', statusT)
       card.appendChild(statusBar)
       let btnDeleteTask = document.createElement('div')
         btnDeleteTask.classList.add('btndeleteTask', 'hide')
@@ -91,24 +99,37 @@ function addTask(e){
         let inputTaskTitle = document.createElement('input')
           inputTaskTitle.setAttribute('type', 'text')
           inputTaskTitle.setAttribute('name', 'taskTitle')
-          inputTaskTitle.setAttribute('value', '')
+          inputTaskTitle.setAttribute('value', titleT)
           inputTaskTitle.setAttribute('placeholder', 'Task Title')
         content.appendChild(inputTaskTitle)
       card.appendChild(content)
-      let description = document.createElement('div')
-        description.classList.add('description')
+      let descriptionTask = document.createElement('div')
+        descriptionTask.classList.add('description')
         let descriptionText = document.createElement('textarea')
+          descriptionText.innerHTML = descriptionT
           descriptionText.setAttribute('placeholder', 'Task description')
           descriptionText.classList.add('description-text')
-          description.appendChild(descriptionText)
-      card.appendChild(description)
-document.querySelector('#initial').appendChild(card)
+          descriptionTask.appendChild(descriptionText)
+      card.appendChild(descriptionTask)
+      if(statusT == 'yellow'){
+        document.querySelector('.todo').appendChild(card)
+        
+      }else if(statusT == 'blue'){
+        document.querySelector('.progress').appendChild(card)
+        
+      }else if(statusT == 'green'){
+        document.querySelector('.done').appendChild(card)
+        
+      }
+
 addIdCards()
 addFuncDeleteTask() 
-salvarDados();
 }
 
-function salvarDados(){
+const btnSaveTasks = document.querySelector('.savetasks')
+btnSaveTasks.addEventListener("click", saveData)
+function saveData(e){
+  e.preventDefault();
   var dadosCards = []
   let i = 0
   let cards = document.querySelectorAll('.card')
@@ -126,13 +147,26 @@ function salvarDados(){
       dadosCards.push(
           {id: i++,
            statusCard: statusTask,
-           tituloCard: titleTask,
+           titleCard: titleTask,
            descriptionCard: descriptionTask
       })
     })
-    console.log(dadosCards)
     localStorage.clear
     localStorage.dadosCards = JSON.stringify(dadosCards)
+}
+
+function recoveryData(){
+  dadosCards = JSON.parse(localStorage.dadosCards)
+  if(dadosCards.length != 0){
+
+  for(let i = 0; i < dadosCards.length; i++){
+    let status = dadosCards[i].statusCard
+    let title = dadosCards[i].titleCard
+    let description = dadosCards[i].descriptionCard
+    console.log(title)
+     addTask(undefined, status, title, description)
+  }
+}
 }
 
 const btnRemoveTask = document.querySelector('.removetask')
@@ -175,5 +209,6 @@ function deleteTask(e){
   e.preventDefault();
   id = this.parentElement.getAttribute('id')
   document.querySelector("#"+id).remove()
-  salvarDados()
 }
+
+recoveryData()

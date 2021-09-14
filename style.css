@@ -16,16 +16,8 @@ main {
   margin-top: 32px;
   text-align: center;
 }
-.addtask{
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: 1px solid #FD951Fcc;
-  background-color: #7a7a7a11;
-  text-align: center;
-  line-height: 54px;
-}
-.removetask{
+
+.btnControl{
   width: 54px;
   height: 54px;
   border-radius: 50%;
@@ -38,12 +30,12 @@ main {
 
 .menu a{
   text-decoration: none;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 900;
   color: #fff;
   padding: 10px;
 }
-.removetask a{
+.btnControl a{
   font-size: 18px;
 }
 .clicked{
@@ -104,7 +96,7 @@ main {
 .content input{
   background-color: #1A1A1C;
   border: none;
-  color: white;
+  color: #ffffffaa;
   display: block;
   font-size: 1.05em;
   font-weight: 400;
@@ -123,7 +115,7 @@ main {
   box-shadow: 0 2px 2px 0px #FD951Fcc;
   border: none;
   background-color: #7a7a7a11;
-  color: white;
+  color: #ffffffaa;
   font-size: 18px;
 
 }
