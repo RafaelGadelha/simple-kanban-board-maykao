@@ -26,6 +26,7 @@ function drag(){
 function dragend(){
   dropzones.forEach( dropzone => dropzone.classList.remove('highlight'))
   this.classList.remove('is-dragging')
+  saveData()
 }
 
 dropzones.forEach(dropzone => {
@@ -50,6 +51,7 @@ function dragleave(){
 function drop(ev){
   ev.preventDefault()
   this.classList.remove('over')
+  
   
   let cardsTodo = document.querySelectorAll(".todo> .card> .status")
   cardsTodo.forEach(cardTodo =>{
@@ -101,6 +103,7 @@ function addTask(e, status, title, description){
           inputTaskTitle.setAttribute('name', 'taskTitle')
           inputTaskTitle.setAttribute('value', titleT)
           inputTaskTitle.setAttribute('placeholder', 'Task Title')
+          inputTaskTitle.setAttribute('onChange', "saveData()")
         content.appendChild(inputTaskTitle)
       card.appendChild(content)
       let descriptionTask = document.createElement('div')
@@ -108,6 +111,7 @@ function addTask(e, status, title, description){
         let descriptionText = document.createElement('textarea')
           descriptionText.innerHTML = descriptionT
           descriptionText.setAttribute('placeholder', 'Task description')
+          descriptionText.setAttribute('onChange', "saveData()")
           descriptionText.classList.add('description-text')
           descriptionTask.appendChild(descriptionText)
       card.appendChild(descriptionTask)
@@ -126,10 +130,8 @@ addIdCards()
 addFuncDeleteTask() 
 }
 
-const btnSaveTasks = document.querySelector('.savetasks')
-btnSaveTasks.addEventListener("click", saveData)
 function saveData(e){
-  e.preventDefault();
+  if(e!== undefined){e.preventDefault()}
   var dadosCards = []
   let i = 0
   let cards = document.querySelectorAll('.card')
@@ -163,7 +165,6 @@ function recoveryData(){
     let status = dadosCards[i].statusCard
     let title = dadosCards[i].titleCard
     let description = dadosCards[i].descriptionCard
-    console.log(title)
      addTask(undefined, status, title, description)
   }
 }
@@ -209,6 +210,7 @@ function deleteTask(e){
   e.preventDefault();
   id = this.parentElement.getAttribute('id')
   document.querySelector("#"+id).remove()
+  saveData()
 }
 
 recoveryData()
