@@ -173,7 +173,7 @@ function recoveryData(){
 const btnRemoveTask = document.querySelector('.removetask')
 btnRemoveTask.addEventListener("click", removeTask)
 function removeTask(e){
-  e.preventDefault();
+  if(e !== undefined) {e.preventDefault()}
   const groupbtndeletetask = document.querySelectorAll('.btndeleteTask')
   const groupstatus = document.querySelectorAll('.status')
   if(btnRemoveTask.classList.contains("clicked")){
@@ -210,6 +210,7 @@ function deleteTask(e){
   e.preventDefault();
   id = this.parentElement.getAttribute('id')
   document.querySelector("#"+id).remove()
+  removeTask()
   saveData()
 }
 
